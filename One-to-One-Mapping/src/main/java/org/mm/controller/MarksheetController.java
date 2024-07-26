@@ -1,8 +1,14 @@
 package org.mm.controller;
 
-import org.mm.entities.Marksheet;
+import java.util.List;
+
+import org.apache.catalina.connector.Response;
+import org.mm.dto.MarksheetDto;
 import org.mm.service.MarksheetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +22,15 @@ public class MarksheetController
 	private MarksheetService marksheetService;
 	
 	@PostMapping(value = "/save")
-	public Marksheet save(@RequestBody Marksheet m)
+	public MarksheetDto save(@RequestBody MarksheetDto marksheetDto)
 	{
-		return marksheetService.save(m);
+		return marksheetService.save(marksheetDto);
 	}
+	
+	@GetMapping(value = "/findAll")
+	public ResponseEntity<List<MarksheetDto>> findAll()
+	{
+		return new ResponseEntity<List<MarksheetDto>>(marksheetService.findAllMarksheet(), HttpStatus.OK);
+	}
+	
 }
