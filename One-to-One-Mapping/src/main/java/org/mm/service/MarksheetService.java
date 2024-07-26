@@ -11,8 +11,10 @@ public class MarksheetService
 	@Autowired
 	private MarksheetRepository marksheetRepository;
 	
-	private Marksheet save(Marksheet m)
+	public Marksheet save(Marksheet m)
 	{
 		return marksheetRepository.save(m);
 	}
+	
+	
 }
