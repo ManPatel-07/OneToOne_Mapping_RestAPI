@@ -16,7 +16,7 @@ public class MarksheetController
 	private MarksheetService marksheetService;
 	
 	@PostMapping(value = "/save")
-	private Marksheet save(@RequestBody Marksheet m)
+	public Marksheet save(@RequestBody Marksheet m)
 	{
 		return marksheetService.save(m);
 	}
